@@ -38,7 +38,6 @@ Os seguintes campos devem ser preenchidos dinamicamente:
 1. **Instalar as dependências**  
    ```sh
    npm install cypress
-   npm install 
    npm install @faker-js/faker --save-dev
    ```
 2. **Executar os testes no modo interativo**  
