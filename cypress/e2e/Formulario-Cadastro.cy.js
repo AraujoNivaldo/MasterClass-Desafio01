@@ -5,6 +5,6 @@ describe('Formulario de cadastro', () =>{
   })
   it('Deve preencher o formulario com sucesso', ()=>{
     cy.preencherFormulario()
-    cy.vericarForm()
+    cy.vericaConclusaoFormulario()
   })
 })
