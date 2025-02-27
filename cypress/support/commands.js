@@ -16,7 +16,7 @@ address = faker.location.streetAddress({useFullAddress: true}) ) =>{
     cy.get('#cadastroForm > button').click()
 })
 
-Cypress.Commands.add('vericaConclusaoFormulario', () =>{  //comando verifica se a caixa de alerta, mensagem e botao estao visiveis
+Cypress.Commands.add('vericaConclusaoFormulario', () =>{
     cy.get('#customAlert').should('be.visible').within(() => {
         cy.get('#alertMessage').should('have.text', 'Cadastro realizado com sucesso!');
         cy.get('#closeAlert').should('be.visible');
