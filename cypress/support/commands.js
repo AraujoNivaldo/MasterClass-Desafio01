@@ -1,11 +1,16 @@
 import {faker} from "@faker-js/faker/locale/pt_BR"
 
-Cypress.Commands.add('preencherFormulario', (nome = faker.person.fullName(), email = faker.internet.email(), password = faker.internet.password(8), 
-dataNsc = faker.date.birthdate().toLocaleDateString('pt-BR'), phone = faker.helpers.replaceSymbols('##9########'), 
-address = faker.location.streetAddress({useFullAddress: true}) ) =>{
+Cypress.Commands.add('preencherFormulario', (
+    nome = faker.person.fullName(), 
+    email = faker.internet.email(), 
+    password = faker.internet.password(8), 
+    dataNsc = faker.date.birthdate().toLocaleDateString('pt-BR'), 
+    phone = faker.helpers.replaceSymbols('##9########'), 
+    address = faker.location.streetAddress({useFullAddress: true})
+    ) =>{
     cy.get('#name').type(nome || '{selectall}{backspace}')
     cy.get('#email').type(email || '{selectall}{backspace}')
-    cy.get('#password').type(password || '{selectall}{backspace}')
+    cy.get('#password').type(password || '{selectall}{backspace}', {log: false}) 
     cy.selecionaItemLista('#gender')
     cy.get('#birthdate').type(dataNsc || '{selectall}{backspace}')
     cy.get('#phone').type(phone || '{selectall}{backspace}')
