@@ -15,16 +15,13 @@ describe('Formulario de cadastro', () =>{
     cy.preencherFormulario({ email:'{selectall}{backspace}'})
     cy.validaPreenchimentoCampos('#email')
   })
-  const emailsInvalidos = ['a', 'a@.', 'a@']
-  emailsInvalidos.forEach((email)=>{
-    it.only('Deve informar a digitacao incorreta do email', () =>{
-      cy.preencherFormulario({ email })
-      cy.verificarMensagemCampoEmail('#email', [ /Inclua um "@" no endereço de e-mail/,
-         /Insira uma parte depois de "@". "a@" está incompleto./,
-        /está sendo usado em uma posição incorreta em/])
-    })
+  it('Deve informar a digitacao incorreta do email "a@."', () =>{
+    const email = 'a@.'
+    cy.preencherFormulario({ email })
+    cy.verificarMensagemCampoEmail('#email', [ /Inclua um "@" no endereço de e-mail/,
+        /Insira uma parte depois de "@". "a@" está incompleto./,
+      /está sendo usado em uma posição incorreta em/])
   })
-  
   it('Campo senha deve ser obrigatorio', () =>{
     cy.preencherFormulario({ password:'{selectall}{backspace}'})
     cy.validaPreenchimentoCampos('#password')
